@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
+import SkeletonProfile from "../skeletons/SkeletonProfile";
 import User from "./User";
 
 const URL = "https://fakestoreapi.com/users";
@@ -22,28 +23,31 @@ const Users = () => {
 
   return (
     <div className="columns is-mobile is-centered is-vcentered is-multiline">
-      <h2 className="title mb-0">Users</h2>
+      <h2 className="title mt-3 mb-0">Users</h2>
       <hr className="is-fullwidth" />
-      {users &&
-        users.map(
-          ({
-            id,
-            name: { firstname, lastname } = {},
-            username,
-            email,
-            phone,
-          }) => {
-            const props = {
+      {users && users.length
+        ? users.map(
+            ({
               id,
-              firstname,
-              lastname,
-              username,
-              email,
-              phone,
-            };
-            return <User {...props} key={id} />;
-          }
-        )}
+              name: { firstname = "", lastname = "" } = {},
+              username = "",
+              email = "",
+              phone = "",
+            }) => {
+              const props = {
+                id,
+                firstname,
+                lastname,
+                username,
+                email,
+                phone,
+              };
+              return <User {...props} key={id} />;
+            }
+          )
+        : Array(9)
+            .fill(1)
+            .map((_, i) => <SkeletonProfile key={i.toString()} />)}
     </div>
   );
 };

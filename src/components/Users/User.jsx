@@ -6,7 +6,7 @@ const User = ({ firstname, lastname, username, email, phone }) => (
       <div className="card-content">
         <div className="media">
           <div className="media-left">
-            <figure className="imageis48x48">
+            <figure className="image is-48x48">
               <img
                 src="https://bulma.io/images/placeholders/96x96.png"
                 alt={`${firstname} ${lastname}`}

@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
+import SkeletonArticle from "../../components/skeletons/SkeletonArticle";
 import Article from "./Article";
 
 const Articles = () => {
@@ -20,11 +21,15 @@ const Articles = () => {
 
   return (
     <div className="columns is-centered is-vcenterd is-mobile is-multiline">
-      <h2 className="title mb-0">Articles</h2>
+      <h2 className="title mt-3 mb-0">Articles</h2>
       <hr className="is-fullwidth" />
-      {articles.map(({ userId, id, title, body }) => (
-        <Article {...{ userId, title, body }} key={id.toString()} />
-      ))}
+      {articles && articles.length
+        ? articles.map(({ userId, id, title = "", body = "" }) => (
+            <Article {...{ userId, title, body }} key={id.toString()} />
+          ))
+        : Array(10)
+            .fill(1)
+            .map((_, i) => <SkeletonArticle key={i.toString()} />)}
     </div>
   );
 };
