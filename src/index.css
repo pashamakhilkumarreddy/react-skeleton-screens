@@ -11,6 +11,8 @@ body {
   height: auto;
   position: relative;
   text-rendering: optimizeLegibility;
+  overflow-y: hidden;
+  overflow-x: hidden;
 }
 
 .is-fullwidth {

@@ -14,10 +14,10 @@ const PageHeader = () => {
 
           <span
             role="button"
-            className="navbar-burger"
+            className={`navbar-burger ${display && "is-active"}`}
             aria-label="menu"
-            aria-expanded="false"
-            data-target="navbarBasicExample"
+            aria-expanded={display}
+            data-target="main-navbar"
             onClick={() => setDisplay((display) => !display)}
           >
             <span aria-hidden="true"></span>
@@ -26,14 +26,19 @@ const PageHeader = () => {
           </span>
         </div>
 
-        <div className="navbar-menu" id="main-navbar">
+        <div
+          className={`navbar-menu ${display && "is-active"}`}
+          id="main-navbar"
+        >
           <div className="navbar-start">
             <Link to="/" className="navbar-item">
               Home
             </Link>
           </div>
           <div className="navbar-end">
-            <Link className="navbar-item" to="/articles">Articles</Link>
+            <Link className="navbar-item" to="/articles">
+              Articles
+            </Link>
           </div>
         </div>
       </nav>
