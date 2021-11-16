@@ -1,9 +1,12 @@
 import PropTypes from "prop-types";
 import SkeletonElement from ".";
+import Shimmer from "./Shimmer";
 import "./skeleton.css";
 
-const SkeletonProfile = () => (
-  <div className="skeleton-wrapper column is-12-mobile is-6-tablet is-half-desktop is-6-widescreen is-4-fullhd">
+const SkeletonProfile = ({ theme = "light" }) => (
+  <div
+    className={`skeleton-wrapper ${theme} column is-12-mobile is-6-tablet is-half-desktop is-6-widescreen is-4-fullhd`}
+  >
     <div className="card">
       <div className="card-content">
         <div className="media">
@@ -24,11 +27,13 @@ const SkeletonProfile = () => (
           <SkeletonElement as="p" type="text" />
         </div>
       </div>
+      <Shimmer />
     </div>
   </div>
 );
 
 SkeletonProfile.propTypes = {
+  theme: PropTypes.oneOf(["light", "dark"]),
   type: PropTypes.string,
 };
 

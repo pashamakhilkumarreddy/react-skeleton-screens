@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { Footer } from "./styles";
 
 const PageFooter = () => {
@@ -10,4 +11,4 @@ const PageFooter = () => {
   );
 };
 
-export default PageFooter;
+export default memo(PageFooter);
